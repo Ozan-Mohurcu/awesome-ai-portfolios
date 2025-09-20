@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozan M. - Portfolyo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Genel CSS Ayarları */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #eef1f6;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        /* Navigasyon Çubuğu (Navbar) */
+        .navbar {
+            background: #ffffff;
+            color: #333;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .navbar h1 a {
+            text-decoration: none;
+            color: #2c3e50;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar h1 a:hover {
+            color: #3498db;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 25px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .navbar ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s ease;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .navbar ul li a:hover {
+            color: #3498db;
+        }
+        
+        /* Bölüm Başlıkları */
+        .section {
+            padding: 60px 0;
+            background-color: #ffffff;
+            margin-top: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #3498db;
+            font-size: 2.2rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #2980b9;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Hakkımda Bölümü - Profil Fotoğrafı ve Bilgiler */
+        #hakkimda {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 6px solid #3498db;
+            box-shadow: 0 0 0 8px rgba(52, 152, 219, 0.3);
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #hakkimda h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        #hakkimda p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.15rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Eğitim ve Deneyim Bölümleri */
+        .list-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .list-item {
+            background-color: #fefefe;
+            padding: 25px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            border-left: 5px solid #3498db;
+        }
+
+        .list-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .list-item h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .list-item p {
+            color: #777;
+            font-size: 1rem;
+        }
+
+        /* Projeler Bölümü - Grid Kart Düzeni */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .project-card {
+            background: #fefefe;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom: 5px solid #3498db;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            flex-grow: 1;
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        .project-card a.button {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card a.button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 40px;
+            font-size: 0.95rem;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: #3498db;
+        }
+
+        .social-icons {
+            margin-top: 15px; /* Üst boşluk */
+        }
+
+        .social-icons a {
+            color: #ecf0f1; /* İkon rengi */
+            font-size: 2rem; /* İkon boyutu */
+            margin: 0 15px; /* İkonlar arası boşluk */
+            transition: color 0.3s ease, transform 0.3s ease; /* Renk ve transform geçişi */
+        }
+
+        .social-icons a:hover {
+            color: #3498db; /* Üzerine gelince renk değiştirme */
+            transform: scale(1.1); /* Hafif büyütme efekti */
+        }
+
+        /* Mobil Cihazlar için Medya Sorguları */
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar ul li {
+                margin: 5px 10px;
+            }
+            
+            .list-container, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            #hakkimda h1 {
+                font-size: 2.2rem;
+            }
+
+            .social-icons a {
+                font-size: 1.8rem;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1><a href="#">Ozan M.</a></h1>
+            <ul>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#egitim">Eğitim</a></li>
+                <li><a href="#deneyim">Deneyim</a></li>
+                <li><a href="#projeler">Projeler</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="hakkimda" class="section">
+            <div class="profile-image-container">
+                <img src="pp.png" alt="Ozan M. Profil Fotoğrafı">
+            </div>
+            <h1>Ozan M.</h1>
+            <p>
+                Boğaziçi Üniversitesi Bilgisayar Mühendisliği mezunu, veri analizi ve makine öğrenimi konularında uzmanlaşmış bir profesyonelim. Sabancı Üniversitesi'nde Veri Bilimi yüksek lisansımı tamamladım ve Google'dan ileri düzey veri analizi sertifikası aldım. E-ticaretten finans sektörüne kadar çeşitli alanlarda veri analisti ve freelance data scientist olarak görev alarak, karmaşık veri setlerini anlamlı içgörülere dönüştürme ve iş süreçlerini optimize etme konusunda deneyim kazandım. Python ve SQL'e hakimim, veri görselleştirme ve tahminleme modelleri geliştirme konularında yetkinim.
+            </p>
+        </section>
+
+        <section id="egitim" class="section">
+            <h2>Eğitim</h2>
+            <div class="list-container">
+                <div class="list-item">
+                    <h3>Boğaziçi Üniversitesi</h3>
+                    <p>Bilgisayar Mühendisliği Lisans</p>
+                </div>
+                <div class="list-item">
+                    <h3>Sabancı Üniversitesi</h3>
+                    <p>Veri Bilimi Yüksek Lisans</p>
+                </div>
+                <div class="list-item">
+                    <h3>Google</h3>
+                    <p>Advanced Data Analytics Sertifikası</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="deneyim" class="section">
+            <h2>Deneyim</h2>
+            <div class="list-container">
+                <div class="list-item">
+                    <h3>Veri Analisti</h3>
+                    <p>E-ticaret şirketinde satış analizi ve raporlama</p>
+                </div>
+                <div class="list-item">
+                    <h3>Freelance Data Scientist</h3>
+                    <p>Müşteri davranış analizi ve tahminleme modelleri</p>
+                </div>
+                <div class="list-item">
+                    <h3>Araştırma Asistanı</h3>
+                    <p>Üniversitede yapay zeka projeleri</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projeler" class="section">
+            <h2>Projeler</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h3>Uyku Sağlığı ve Yaşam Tarzı Analizi</h3>
+                        <p>Pandas ve Matplotlib kullanarak geniş bir veri setinde veri temizleme ve görselleştirme tekniklerinin uygulanması.</p>
+                    </div>
+                    <a href="#" class="button">Detaylar</a>
+                </div>
+                
+                <div class="project-card">
+                    <div>
+                        <h3>Gayrimenkul Satış Analizi (2001–2022)</h3>
+                        <p>Python ile geçmiş verileri kullanarak fiyat trendlerini ve pazar dinamiklerini inceleyen kapsamlı bir analiz projesi.</p>
+                    </div>
+                    <a href="#" class="button">Detaylar</a>
+                </div>
+                
+                <div class="project-card">
+                    <div>
+                        <h3>Tıbbi Maliyet Analizi</h3>
+                        <p>Demografik verileri ve sağlık kayıtlarını kullanarak tıbbi maliyetler üzerindeki etkileri ortaya çıkaran bir analiz.</p>
+                    </div>
+                    <a href="#" class="button">Detaylar</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Ozan M. Tüm hakları saklıdır.</p>
+        <div class="social-icons">
+            <a href="mailto:ornek.mail@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/ornekprofil" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="tr"> <!-- Türkçe dil desteği -->
+<head>
+    <meta charset="UTF-8"> <!-- UTF-8 karakter kodlaması -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive tasarım için viewport ayarı -->
+    <title>Ozan M. - Veri Bilimci Portfolio</title> <!-- Sayfa başlığı -->
+    <style>
+        * {
+            margin: 0; /* Tüm elementlerin margin'ini sıfırla */
+            padding: 0; /* Tüm elementlerin padding'ini sıfırla */
+            box-sizing: border-box; /* Box model'i border-box yap */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font ailesi */
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); /* Koyu gradient arka plan */
+            color: #e0e0e0; /* Ana metin rengi açık gri */
+            line-height: 1.6; /* Satır yüksekliği okunabilirlik için */
+            overflow-x: hidden; /* Yatay kaydırma çubuğunu gizle */
+        }
+
+        /* Navbar Stilleri */
+        .navbar {
+            position: fixed; /* Navbar'ı sabit konumda tut */
+            top: 0; /* En üstte konumlandır */
+            width: 100%; /* Tam genişlik */
+            background: rgba(10, 10, 10, 0.95); /* Yarı saydam koyu arka plan */
+            backdrop-filter: blur(10px); /* Bulanık efekt */
+            z-index: 1000; /* En üst katmanda göster */
+            padding: 1rem 0; /* Üst ve alt padding */
+            border-bottom: 2px solid #00ffff; /* Alt kenarda neon mavi çizgi */
+        }
+
+        .nav-container {
+            max-width: 1200px; /* Maksimum genişlik sınırı */
+            margin: 0 auto; /* Ortalamak için */
+            display: flex; /* Flexbox düzeni */
+            justify-content: space-between; /* İçeriği iki yana yaydır */
+            align-items: center; /* Dikey olarak ortala */
+            padding: 0 2rem; /* Yatay padding */
+        }
+
+        .logo {
+            font-size: 1.5rem; /* Logo font boyutu */
+            font-weight: bold; /* Kalın yazı */
+            color: #00ff88; /* Neon yeşil renk */
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); /* Neon glow efekti */
+        }
+
+        .nav-links {
+            display: flex; /* Flexbox düzeni */
+            list-style: none; /* Liste işaretlerini kaldır */
+            gap: 2rem; /* Linkler arası boşluk */
+        }
+
+        .nav-links a {
+            color: #e0e0e0; /* Link rengi */
+            text-decoration: none; /* Alt çizgiyi kaldır */
+            font-weight: 500; /* Orta kalınlık */
+            transition: all 0.3s ease; /* Geçiş animasyonu */
+            position: relative; /* Relative konumlama */
+        }
+
+        .nav-links a:hover {
+            color: #00ffff; /* Hover'da neon mavi */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7); /* Hover glow efekti */
+        }
+
+        /* Ana İçerik Alanı */
+        main {
+            margin-top: 80px; /* Navbar yüksekliği kadar üst margin */
+        }
+
+        .section {
+            padding: 4rem 2rem; /* Bölüm padding'i */
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 0 auto; /* Ortalamak için */
+        }
+
+        /* Hero Bölümü */
+        .hero {
+            text-align: center; /* Metni ortala */
+            padding: 6rem 2rem; /* Geniş padding */
+            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.1) 0%, transparent 70%); /* Radyal gradient */
+        }
+
+        /* Profil Fotoğrafı */
+        .profile-photo {
+            width: 200px; /* Fotoğraf genişliği */
+            height: 200px; /* Fotoğraf yüksekliği */
+            border-radius: 50%; /* Yuvarlak fotoğraf */
+            margin: 0 auto 2rem; /* Ortalanmış ve alt margin */
+            display: block; /* Block element */
+            border: 4px solid transparent; /* Saydam kenarlık */
+            background: linear-gradient(45deg, #00ffff, #00ff88) padding-box, linear-gradient(45deg, #00ffff, #00ff88) border-box; /* Gradient kenarlık */
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3); /* Neon glow efekti */
+            transition: all 0.3s ease; /* Geçiş animasyonu */
+            object-fit: cover; /* Fotoğrafı düzgün sığdır */
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05); /* Hover'da büyüt */
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5); /* Daha güçlü glow */
+        }
+
+        /* Placeholder fotoğraf için */
+        .profile-placeholder {
+            width: 200px; /* Placeholder genişliği */
+            height: 200px; /* Placeholder yüksekliği */
+            border-radius: 50%; /* Yuvarlak şekil */
+            margin: 0 auto 2rem; /* Ortalanmış ve alt margin */
+            display: flex; /* Flexbox düzeni */
+            align-items: center; /* Dikey ortala */
+            justify-content: center; /* Yatay ortala */
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a); /* Gradient arka plan */
+            border: 4px solid; /* Kenarlık kalınlığı */
+            border-image: linear-gradient(45deg, #00ffff, #00ff88) 1; /* Gradient kenarlık */
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3); /* Neon glow */
+            transition: all 0.3s ease; /* Geçiş animasyonu */
+            font-size: 4rem; /* Büyük icon boyutu */
+            color: #00ffff; /* Neon mavi renk */
+        }
+
+        .profile-placeholder:hover {
+            transform: scale(1.05); /* Hover'da büyüt */
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5); /* Daha güçlü glow */
+        }
+
+        .hero h1 {
+            font-size: 3.5rem; /* Büyük başlık */
+            margin-bottom: 1rem; /* Alt margin */
+            background: linear-gradient(45deg, #00ffff, #00ff88); /* Gradient metin */
+            -webkit-background-clip: text; /* Gradient'i metne uygula */
+            -webkit-text-fill-color: transparent; /* Metin rengini saydam yap */
+            background-clip: text; /* Standard gradient clip */
+            animation: glow 2s ease-in-out infinite alternate; /* Parlama animasyonu */
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Başlangıç glow */
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 255, 136, 0.8); /* Bitiş glow */
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem; /* Büyükçe paragraf */
+            margin-bottom: 2rem; /* Alt margin */
+            color: #b0b0b0; /* Açık gri renk */
+        }
+
+        /* Bölüm Başlıkları */
+        .section-title {
+            font-size: 2.5rem; /* Başlık boyutu */
+            margin-bottom: 3rem; /* Alt margin */
+            text-align: center; /* Ortalanmış */
+            color: #00ffff; /* Neon mavi */
+            position: relative; /* Relative konumlama */
+        }
+
+        .section-title::after {
+            content: ''; /* Boş içerik */
+            display: block; /* Block element */
+            width: 100px; /* Genişlik */
+            height: 3px; /* Yükseklik */
+            background: linear-gradient(90deg, #00ffff, #00ff88); /* Gradient çizgi */
+            margin: 1rem auto 0; /* Ortalanmış margin */
+        }
+
+        /* Kart Tasarımı */
+        .card {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a); /* Gradient arka plan */
+            border-radius: 15px; /* Yuvarlatılmış köşeler */
+            padding: 2rem; /* İç padding */
+            margin-bottom: 2rem; /* Alt margin */
+            border: 1px solid #333; /* Koyu kenarlık */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Gölge efekti */
+            transition: all 0.3s ease; /* Geçiş animasyonu */
+            position: relative; /* Relative konumlama */
+            overflow: hidden; /* Taşan içeriği gizle */
+        }
+
+        .card::before {
+            content: ''; /* Boş içerik */
+            position: absolute; /* Absolute konumlama */
+            top: -2px; /* Üst pozisyon */
+            left: -2px; /* Sol pozisyon */
+            right: -2px; /* Sağ pozisyon */
+            bottom: -2px; /* Alt pozisyon */
+            background: linear-gradient(45deg, #00ffff, #00ff88, #00ffff); /* Gradient kenarlık */
+            border-radius: 15px; /* Yuvarlatılmış köşeler */
+            opacity: 0; /* Başlangıçta görünmez */
+            z-index: -1; /* Arka planda */
+            transition: opacity 0.3s ease; /* Geçiş animasyonu */
+        }
+
+        .card:hover::before {
+            opacity: 1; /* Hover'da görünür yap */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Yukarı hareket */
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2); /* Neon gölge */
+        }
+
+        /* Grid Düzeni */
+        .grid {
+            display: grid; /* Grid düzeni */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 2rem; /* Grid boşluğu */
+            margin-top: 2rem; /* Üst margin */
+        }
+
+        /* Liste Stilleri */
+        .skills-list {
+            display: flex; /* Flexbox düzeni */
+            flex-wrap: wrap; /* Satır kaydırma */
+            gap: 1rem; /* Boşluk */
+            margin-top: 1rem; /* Üst margin */
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #00ffff20, #00ff8820); /* Gradient arka plan */
+            color: #00ffff; /* Neon mavi metin */
+            padding: 0.5rem 1rem; /* Padding */
+            border-radius: 25px; /* Yuvarlak köşeler */
+            font-size: 0.9rem; /* Küçük font */
+            border: 1px solid #00ffff40; /* Yarı saydam kenarlık */
+            transition: all 0.3s ease; /* Geçiş animasyonu */
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(45deg, #00ffff40, #00ff8840); /* Hover arka planı */
+            transform: scale(1.05); /* Büyütme efekti */
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3); /* Glow efekti */
+        }
+
+        /* İletişim Bölümü */
+        .contact-info {
+            display: flex; /* Flexbox düzeni */
+            justify-content: space-around; /* Eşit dağılım */
+            flex-wrap: wrap; /* Satır kaydırma */
+            gap: 2rem; /* Boşluk */
+        }
+
+        .contact-item {
+            text-align: center; /* Ortalanmış metin */
+            padding: 2rem; /* Padding */
+            background: rgba(0, 255, 255, 0.1); /* Yarı saydam arka plan */
+            border-radius: 15px; /* Yuvarlatılmış köşeler */
+            border: 1px solid rgba(0, 255, 255, 0.3); /* Yarı saydam kenarlık */
+            transition: all 0.3s ease; /* Geçiş animasyonu */
+            min-width: 200px; /* Minimum genişlik */
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 255, 136, 0.2); /* Hover arka planı */
+            transform: translateY(-3px); /* Yukarı hareket */
+        }
+
+        .contact-item h3 {
+            color: #00ff88; /* Neon yeşil başlık */
+            margin-bottom: 0.5rem; /* Alt margin */
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Mobilde nav linklerini gizle */
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem; /* Mobilde küçük başlık */
+            }
+            
+            .section {
+                padding: 2rem 1rem; /* Mobilde az padding */
+            }
+            
+            .grid {
+                grid-template-columns: 1fr; /* Mobilde tek sütun */
+            }
+            
+            .contact-info {
+                flex-direction: column; /* Mobilde dikey düzen */
+                align-items: center; /* Ortalanmış */
+            }
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0; /* Başlangıçta saydam */
+                transform: translateY(30px); /* Aşağıda başla */
+            }
+            to {
+                opacity: 1; /* Sonunda opak */
+                transform: translateY(0); /* Normal pozisyona gel */
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.8s ease-out; /* Fade in animasyonu */
+        }
+
+        /* Hamburger Menu (Mobil) */
+        .hamburger {
+            display: none; /* Varsayılan olarak gizli */
+            flex-direction: column; /* Dikey düzen */
+            cursor: pointer; /* Tıklanabilir cursor */
+        }
+
+        .hamburger span {
+            width: 25px; /* Çizgi genişliği */
+            height: 3px; /* Çizgi yüksekliği */
+            background: #00ffff; /* Neon mavi renk */
+            margin: 3px 0; /* Çizgiler arası boşluk */
+            transition: 0.3s; /* Geçiş animasyonu */
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex; /* Mobilde hamburger'ı göster */
+            }
+        }
+
+        /* Özel Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px; /* Scrollbar genişliği */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a; /* Track arka planı */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00ffff, #00ff88); /* Thumb gradient */
+            border-radius: 4px; /* Yuvarlak köşeler */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #00ff88, #00ffff); /* Hover gradient */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar"> <!-- Sabit üst navigasyon -->
+        <div class="nav-container"> <!-- Navigasyon container'ı -->
+            <div class="logo">Ozan M.</div> <!-- Logo/isim -->
+            <ul class="nav-links"> <!-- Navigasyon linkleri -->
+                <li><a href="#anasayfa">Ana Sayfa</a></li> <!-- Ana sayfa linki -->
+                <li><a href="#hakkimda">Hakkımda</a></li> <!-- Hakkımda linki -->
+                <li><a href="#egitim">Eğitim</a></li> <!-- Eğitim linki -->
+                <li><a href="#deneyim">Deneyim</a></li> <!-- Deneyim linki -->
+                <li><a href="#projeler">Projeler</a></li> <!-- Projeler linki -->
+                <li><a href="#iletisim">İletişim</a></li> <!-- İletişim linki -->
+            </ul>
+            <div class="hamburger"> <!-- Mobil hamburger menu -->
+                <span></span> <!-- Hamburger çizgi 1 -->
+                <span></span> <!-- Hamburger çizgi 2 -->
+                <span></span> <!-- Hamburger çizgi 3 -->
+            </div>
+        </div>
+    </nav>
+
+    <main> <!-- Ana içerik alanı -->
+        <!-- Hero Bölümü -->
+        <section id="anasayfa" class="hero"> <!-- Ana sayfa hero bölümü -->
+            <!-- Profil Fotoğrafı - Kendi fotoğrafınızı eklemek için aşağıdaki yorum satırlarını okuyun -->
+            <!-- 
+            FOTOĞRAF EKLEME TALİMATLARI:
+            1. Aşağıdaki placeholder div'i silin
+            2. Bu yorumun altına şu kodu ekleyin:
+            <img src="profilin.jpg" alt="Ozan M. Profil Fotoğrafı" class="profile-photo">
+            3. "profilin.jpg" yerine kendi fotoğraf dosyanızın adını yazın
+            4. Fotoğrafı HTML dosyasıyla aynı klasöre koyun
+            -->
+            <div class="profile-placeholder">
+                <img src="pp.png" alt="Profil Fotoğrafı" style="width:150px; height:150px; border-radius:50%;">
+            </div>
+
+            
+            <h1>Ozan M.</h1> <!-- Ana başlık -->
+            <p>Veri Bilimci & Yapay Zeka Uzmanı</p> <!-- Alt başlık -->
+            <p>Verilerden anlamlı çıkarımlar yaparak geleceği şekillendiren bir teknoloji tutkunu</p> <!-- Açıklama metni -->
+        </section>
+
+        <!-- Hakkımda Bölümü -->
+        <section id="hakkimda" class="section"> <!-- Hakkımda bölümü -->
+            <h2 class="section-title">Hakkımda</h2> <!-- Bölüm başlığı -->
+            <div class="card"> <!-- Hakkımda kartı -->
+                <p>Merhaba! Ben Ozan, veri bilimi ve yapay zeka alanında uzmanlaşmış bir mühendisim. Boğaziçi Üniversitesi'nden Bilgisayar Mühendisliği lisans derecesi ve Sabancı Üniversitesi'nden Veri Bilimi yüksek lisans derecesi aldım.</p> <!-- Kişisel tanıtım -->
+                
+                <p>E-ticaret sektöründen sağlık verilerine, gayrimenkul analizlerinden müşteri davranış tahminlemelerine kadar geniş bir yelpazede projeler geliştirdim. Veri temizleme, görselleştirme ve makine öğrenmesi modellerini kullanarak karmaşık problemlere çözümler üretmeyi seviyorum.</p> <!-- Deneyim özeti -->
+                
+                <div class="skills-list"> <!-- Yetenekler listesi -->
+                    <span class="skill-tag">Python</span> <!-- Python yeteneği -->
+                    <span class="skill-tag">Pandas</span> <!-- Pandas yeteneği -->
+                    <span class="skill-tag">Matplotlib</span> <!-- Matplotlib yeteneği -->
+                    <span class="skill-tag">Scikit-learn</span> <!-- Scikit-learn yeteneği -->
+                    <span class="skill-tag">SQL</span> <!-- SQL yeteneği -->
+                    <span class="skill-tag">Makine Öğrenmesi</span> <!-- ML yeteneği -->
+                    <span class="skill-tag">Veri Analizi</span> <!-- Veri analizi yeteneği -->
+                    <span class="skill-tag">İstatistik</span> <!-- İstatistik yeteneği -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Eğitim Bölümü -->
+        <section id="egitim" class="section"> <!-- Eğitim bölümü -->
+            <h2 class="section-title">Eğitim</h2> <!-- Bölüm başlığı -->
+            <div class="grid"> <!-- Grid düzeni -->
+                <div class="card"> <!-- Lisans eğitim kartı -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Boğaziçi Üniversitesi</h3> <!-- Üniversite adı -->
+                    <h4 style="color: #00ffff; margin-bottom: 0.5rem;">Bilgisayar Mühendisliği Lisans</h4> <!-- Bölüm adı -->
+                    <p>Algoritma ve veri yapıları, yazılım mühendisliği, veritabanı sistemleri ve yapay zeka temellerini kapsayan kapsamlı bir eğitim aldım.</p> <!-- Eğitim açıklaması -->
+                </div>
+                
+                <div class="card"> <!-- Yüksek lisans eğitim kartı -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Sabancı Üniversitesi</h3> <!-- Üniversite adı -->
+                    <h4 style="color: #00ffff; margin-bottom: 0.5rem;">Veri Bilimi Yüksek Lisans</h4> <!-- Program adı -->
+                    <p>İleri düzey istatistik, makine öğrenmesi algoritmaları, büyük veri analizi ve derin öğrenme konularında uzmanlaştım.</p> <!-- Eğitim açıklaması -->
+                </div>
+                
+                <div class="card"> <!-- Sertifika kartı -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Google</h3> <!-- Sertifika sağlayıcısı -->
+                    <h4 style="color: #00ffff; margin-bottom: 0.5rem;">Advanced Data Analytics Sertifikası</h4> <!-- Sertifika adı -->
+                    <p>Google'ın ileri düzey veri analizi programını başarıyla tamamlayarak endüstri standartlarında veri analiz becerilerimi geliştirdim.</p> <!-- Sertifika açıklaması -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Deneyim Bölümü -->
+        <section id="deneyim" class="section"> <!-- Deneyim bölümü -->
+            <h2 class="section-title">İş Deneyimi</h2> <!-- Bölüm başlığı -->
+            <div class="grid"> <!-- Grid düzeni -->
+                <div class="card"> <!-- Veri analisti pozisyonu -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Veri Analisti</h3> <!-- Pozisyon adı -->
+                    <h4 style="color: #00ffff; margin-bottom: 0.5rem;">E-ticaret Şirketi</h4> <!-- Şirket türü -->
+                    <p>Satış verilerini analiz ederek işletme kararlarını destekleyen raporlar hazırladım. Müşteri segmentasyonu ve satış tahminleme modelleri geliştirdim.</p> <!-- İş açıklaması -->
+                    <div class="skills-list"> <!-- Bu işteki beceriler -->
+                        <span class="skill-tag">Satış Analizi</span> <!-- Satış analizi becerisi -->
+                        <span class="skill-tag">Raporlama</span> <!-- Raporlama becerisi -->
+                        <span class="skill-tag">Business Intelligence</span> <!-- BI becerisi -->
+                    </div>
+                </div>
+                
+                <div class="card"> <!-- Freelance pozisyon -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Freelance Data Scientist</h3> <!-- Pozisyon adı -->
+                    <h4 style="color: #00ffff; margin-bottom: 0.5rem;">Çeşitli Müşteriler</h4> <!-- Çalışma türü -->
+                    <p>Farklı sektörlerden müşteriler için müşteri davranış analizi ve tahminleme modelleri geliştirdim. Makine öğrenmesi algoritmaları kullanarak özelleştirilmiş çözümler sundum.</p> <!-- İş açıklaması -->
+                    <div class="skills-list"> <!-- Bu işteki beceriler -->
+                        <span class="skill-tag">Müşteri Analizi</span> <!-- Müşteri analizi becerisi -->
+                        <span class="skill-tag">Tahminleme</span> <!-- Tahminleme becerisi -->
+                        <span class="skill-tag">Model Geliştirme</span> <!-- Model geliştirme becerisi -->
+                    </div>
+                </div>
+                
+                <div class="card"> <!-- Araştırma asistanı pozisyonu -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Araştırma Asistanı</h3> <!-- Pozisyon adı -->
+                    <h4 style="color: #00ffff; margin-bottom: 0.5rem;">Üniversite Yapay Zeka Laboratuvarı</h4> <!-- Çalışma yeri -->
+                    <p>Yapay zeka projelerinde araştırma ve geliştirme çalışmaları yürüttüm. Akademik makaleler yazarak bilimsel topluma katkıda bulundum.</p> <!-- İş açıklaması -->
+                    <div class="skills-list"> <!-- Bu işteki beceriler -->
+                        <span class="skill-tag">Araştırma</span> <!-- Araştırma becerisi -->
+                        <span class="skill-tag">Yapay Zeka</span> <!-- AI becerisi -->
+                        <span class="skill-tag">Akademik Yazım</span> <!-- Akademik yazım becerisi -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projeler Bölümü -->
+        <section id="projeler" class="section"> <!-- Projeler bölümü -->
+            <h2 class="section-title">Projeler</h2> <!-- Bölüm başlığı -->
+            <div class="grid"> <!-- Grid düzeni -->
+                <div class="card"> <!-- Uyku analizi projesi -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Uyku Sağlığı ve Yaşam Tarzı Analizi</h3> <!-- Proje adı -->
+                    <p>Uyku kalitesi ve yaşam tarzı faktörleri arasındaki ilişkiyi analiz ettim. Pandas kütüphanesi ile veri temizleme işlemleri gerçekleştirdim ve Matplotlib ile görselleştirmeler oluşturdum.</p> <!-- Proje açıklaması -->
+                    <div class="skills-list"> <!-- Proje beceriler -->
+                        <span class="skill-tag">Pandas</span> <!-- Pandas kullanımı -->
+                        <span class="skill-tag">Matplotlib</span> <!-- Matplotlib kullanımı -->
+                        <span class="skill-tag">Veri Temizleme</span> <!-- Veri temizleme -->
+                        <span class="skill-tag">Görselleştirme</span> <!-- Görselleştirme -->
+                    </div>
+                </div>
+                
+                <div class="card"> <!-- Gayrimenkul analizi projesi -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Gayrimenkul Satış Analizi (2001–2022)</h3> <!-- Proje adı -->
+                    <p>21 yıllık gayrimenkul satış verilerini analiz ederek fiyat trendlerini ve pazar dinamiklerini inceledim. Python ile kapsamlı zaman serisi analizi gerçekleştirdim.</p> <!-- Proje açıklaması -->
+                    <div class="skills-list"> <!-- Proje becerileri -->
+                        <span class="skill-tag">Python</span> <!-- Python kullanımı -->
+                        <span class="skill-tag">Zaman Serisi</span> <!-- Zaman serisi analizi -->
+                        <span class="skill-tag">Fiyat Analizi</span> <!-- Fiyat analizi -->
+                        <span class="skill-tag">Pazar Araştırması</span> <!-- Pazar araştırması -->
+                    </div>
+                </div>
+                
+                <div class="card"> <!-- Tıbbi maliyet analizi projesi -->
+                    <h3 style="color: #00ff88; margin-bottom: 1rem;">Tıbbi Maliyet Analizi</h3> <!-- Proje adı -->
+                    <p>Demografik veriler kullanarak sağlık harcamaları için tahmin modelleri geliştirdim. Yaş, cinsiyet ve sosyoekonomik faktörlerin sağlık maliyetlerine etkisini araştırdım.</p> <!-- Proje açıklaması -->
+                    <div class="skills-list"> <!-- Proje becerileri -->
+                        <span class="skill-tag">Sağlık Verisi</span> <!-- Sağlık verisi analizi -->
+                        <span class="skill-tag">Demografi</span> <!-- Demografik analiz -->
+                        <span class="skill-tag">Maliyet Analizi</span> <!-- Maliyet analizi -->
+                        <span class="skill-tag">Tahmin Modeli</span> <!-- Tahmin modeli -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- İletişim Bölümü -->
+        <section id="iletisim" class="section"> <!-- İletişim bölümü -->
+            <h2 class="section-title">İletişim</h2> <!-- Bölüm başlığı -->
+            <div class="contact-info"> <!-- İletişim bilgileri container -->
+                <div class="contact-item"> <!-- E-posta iletişim -->
+                    <h3>E-posta</h3> <!-- İletişim başlığı -->
+                    <p>ozan.m@email.com</p> <!-- E-posta adresi -->
+                </div>
+                
+                <div class="contact-item"> <!-- LinkedIn iletişim -->
+                    <h3>LinkedIn</h3> <!-- İletişim başlığı -->
+                    <p>linkedin.com/in/ozanm</p> <!-- LinkedIn profili -->
+                </div>
+                
+                <div class="contact-item"> <!-- GitHub iletişim -->
+                    <h3>GitHub</h3> <!-- İletişim başlığı -->
+                    <p>github.com/ozanm</p> <!-- GitHub profili -->
+                </div>
+                
+                <div class="contact-item"> <!-- Konum bilgisi -->
+                    <h3>Konum</h3> <!-- İletişim başlığı -->
+                    <p>İstanbul, Türkiye</p> <!-- Konum -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scroll navigasyonu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { // Tüm iç linkleri seç
+            anchor.addEventListener('click', function (e) { // Click event ekle
+                e.preventDefault(); // Varsayılan davranışı engelle
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ // Smooth scroll
+                    behavior: 'smooth' // Yumuşak kaydırma
+                });
+            });
+        });
+
+        // Navbar scroll efekti
+        window.addEventListener('scroll', function() { // Scroll event dinleyicisi
+            const navbar = document.querySelector('.navbar'); // Navbar elementini seç
+            if (window.scrollY > 100) { // 100px kaydırıldığında
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)'; // Daha opak arka plan
+            } else { // Üstteyken
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)'; // Normal arka plan
+            }
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger'); // Hamburger butonunu seç
+        const navLinks = document.querySelector('.nav-links'); // Nav linklerini seç
+        
+        hamburger.addEventListener('click', () => { // Hamburger click event
+            navLinks.classList.toggle('active'); // Active class'ını toggle et
+        });
+
+        // Sayfa yüklenirken animasyon
+        window.addEventListener('load', function() { // Sayfa yüklenince
+            document.body.style.opacity = '1'; // Body'yi görünür yap
+        });
+
+        // Kartlara tıklama efekti
+        document.querySelectorAll('.card').forEach(card => { // Tüm kartları seç
+            card.addEventListener('mouseenter', function() { // Mouse enter event
+                this.style.transform = 'translateY(-8px) scale(1.02)'; // Hover efekti
+            });
+            
+            card.addEventListener('mouseleave', function() { // Mouse leave event
+                this.style.transform = 'translateY(0) scale(1)'; // Normal duruma dön
+            });
+        });
+
+        // Scroll animasyonları için intersection observer
+        const observerOptions = { // Observer seçenekleri
+            threshold: 0.1, // %10 görünür olduğunda tetikle
+            rootMargin: '0px 0px -50px 0px' // Alt margin
+        };
+
+        const observer = new IntersectionObserver(function(entries) { // Intersection observer oluştur
+            entries.forEach(entry => { // Her entry için
+                if (entry.isIntersecting) { // Görünür durumdaysa
+                    entry.target.style.opacity = '1'; // Görünür yap
+                    entry.target.style.transform = 'translateY(0)'; // Normal pozisyona getir
+                }
+            });
+        }, observerOptions);
+
+        // Tüm section'ları gözlemle
+        document.querySelectorAll('.section').forEach(section => { // Tüm section'ları seç
+            section.style.opacity = '0'; // Başlangıçta gizli
+            section.style.transform = 'translateY(30px)'; // Aşağıda konumlandır
+            section.style.transition = 'all 0.8s ease-out'; // Geçiş animasyonu
+            observer.observe(section); // Observer'a ekle
+        });
+    </script>
+</body>
+</html>

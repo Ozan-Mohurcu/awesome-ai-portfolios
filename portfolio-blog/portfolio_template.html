@@ -1,0 +1,485 @@
+<!DOCTYPE html> <!-- HTML5 belge tipi bildirimi -->
+<html lang="tr"> <!-- Türkçe içerik için dil etiketi -->
+<head>
+    <meta charset="UTF-8"> <!-- Türkçe karakter desteği -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive görünüm için -->
+    <title>Ozan M. - Veri Bilimci & Analist</title> <!-- Sekme başlığı -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- İkon kütüphanesi -->
+    <style>
+        /* Genel stiller */
+        * {
+            margin: 0; /* Varsayılan marginleri sıfırla */
+            padding: 0; /* Varsayılan paddingleri sıfırla */
+            box-sizing: border-box; /* Kutu modeli ayarı */
+        }
+        
+        :root {
+            --primary: #2c3e50; /* Ana renk: Koyu mavi */
+            --secondary: #e74c3c; /* İkincil renk: Kırmızı */
+            --accent: #3498db; /* Vurgu rengi: Mavi */
+            --light-bg: #f9f9f9; /* Açık arkaplan rengi */
+            --dark-text: #2c3e50; /* Koyu metin rengi */
+            --light-text: #7f8c8d; /* Açık metin rengi */
+            --border-color: #e0e0e0; /* Kenarlık rengi */
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Kart gölgesi */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font ailesi */
+            line-height: 1.6; /* Satır yüksekliği */
+            color: var(--dark-text); /* Koyu metin rengi */
+            background-color: var(--light-bg); /* Açık arkaplan */
+            padding: 0; /* İç boşluk */
+            margin: 0; /* Dış boşluk */
+        }
+        
+        /* Başlık bölümü */
+        .header {
+            background: linear-gradient(to right, var(--primary), #34495e); /* Gradyan arkaplan */
+            color: white; /* Beyaz yazı rengi */
+            padding: 3rem 2rem; /* İç boşluk */
+            text-align: center; /* Ortalı içerik */
+        }
+        
+        .profile-container {
+            display: flex; /* Esnek kutu modeli */
+            flex-direction: column; /* Dikey yığınlama */
+            align-items: center; /* Yatayda ortala */
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 0 auto; /* Otomatik yatay marj */
+        }
+        
+        .profile-img {
+            width: 150px; /* Genişlik */
+            height: 150px; /* Yükseklik */
+            border-radius: 50%; /* Daire şekli */
+            object-fit: cover; /* Görseli kırpma */
+            border: 4px solid white; /* Beyaz kenarlık */
+            margin-bottom: 1.5rem; /* Alt boşluk */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Gölge efekti */
+        }
+        
+        .header h1 {
+            font-size: 2.5rem; /* Büyük yazı boyutu */
+            margin-bottom: 0.5rem; /* Alt boşluk */
+            font-weight: 700; /* Kalın yazı */
+        }
+        
+        .tagline {
+            font-size: 1.2rem; /* Orta yazı boyutu */
+            color: rgba(255, 255, 255, 0.9); /* Yarı saydam beyaz */
+            margin-bottom: 1.5rem; /* Alt boşluk */
+            max-width: 600px; /* Maksimum genişlik */
+        }
+        
+        .social-links {
+            display: flex; /* Esnek kutu modeli */
+            gap: 1rem; /* Elemanlar arası boşluk */
+            margin-bottom: 1.5rem; /* Alt boşluk */
+        }
+        
+        .social-links a {
+            display: inline-flex; /* Satır içi esnek kutu */
+            align-items: center; /* Dikeyde ortala */
+            justify-content: center; /* Yatayda ortala */
+            width: 45px; /* Genişlik */
+            height: 45px; /* Yükseklik */
+            border-radius: 50%; /* Daire şekli */
+            background-color: rgba(255, 255, 255, 0.1); /* Yarı saydam beyaz */
+            color: white; /* Beyaz renk */
+            transition: all 0.3s; /* Tüm geçişler için efekt */
+            text-decoration: none; /* Alt çizgiyi kaldır */
+        }
+        
+        .social-links a:hover {
+            background-color: white; /* Beyaz arkaplan */
+            color: var(--primary); /* Ana renk */
+            transform: translateY(-3px); /* Yukarı kaydırma efekti */
+        }
+        
+        /* Hakkımda bölümü */
+        .about-section {
+            background-color: rgba(255, 255, 255, 0.1); /* Yarı saydam beyaz arkaplan */
+            padding: 1.5rem; /* İç boşluk */
+            border-radius: 8px; /* Köşe yuvarlaklığı */
+            margin-top: 1rem; /* Üst boşluk */
+            max-width: 600px; /* Maksimum genişlik */
+            text-align: left; /* Sola hizalı metin */
+        }
+        
+        .about-section h3 {
+            font-size: 1.2rem; /* Orta yazı boyutu */
+            margin-bottom: 0.8rem; /* Alt boşluk */
+            color: white; /* Beyaz yazı rengi */
+            display: flex; /* Esnek kutu modeli */
+            align-items: center; /* Dikeyde ortala */
+            gap: 0.5rem; /* Elemanlar arası boşluk */
+        }
+        
+        .about-section p {
+            color: rgba(255, 255, 255, 0.9); /* Yarı saydam beyaz */
+            line-height: 1.6; /* Satır yüksekliği */
+            font-size: 0.95rem; /* Küçük yazı boyutu */
+        }
+        
+        /* Ana içerik düzeni */
+        .main-container {
+            display: grid; /* Izgara düzeni */
+            grid-template-columns: 1fr 350px; /* Sütun oranları */
+            gap: 2rem; /* Sütunlar arası boşluk */
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 2rem auto; /* Dikey ve yatay ortala */
+            padding: 0 1.5rem; /* Yatay iç boşluk */
+        }
+        
+        /* Blog bölümü */
+        .blog-posts {
+            display: flex; /* Esnek kutu modeli */
+            flex-direction: column; /* Dikey yığınlama */
+            gap: 1.5rem; /* Elemanlar arası boşluk */
+        }
+        
+        .section-title {
+            font-size: 1.5rem; /* Orta büyük yazı boyutu */
+            color: var(--primary); /* Ana renk */
+            margin-bottom: 1rem; /* Alt boşluk */
+            padding-bottom: 0.5rem; /* Alt iç boşluk */
+            border-bottom: 2px solid var(--accent); /* Alt kenarlık */
+        }
+        
+        .blog-card {
+            background: white; /* Beyaz arkaplan */
+            border-radius: 8px; /* Köşe yuvarlaklığı */
+            overflow: hidden; /* Taşan içeriği gizle */
+            box-shadow: var(--card-shadow); /* Kart gölgesi */
+            transition: transform 0.3s, box-shadow 0.3s; /* Geçiş efektleri */
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px); /* Yukarı kaydırma efekti */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Daha belirgin gölge */
+        }
+        
+        .blog-content {
+            padding: 1.5rem; /* İç boşluk */
+        }
+        
+        .blog-title {
+            font-size: 1.3rem; /* Orta yazı boyutu */
+            color: var(--primary); /* Ana renk */
+            margin-bottom: 0.5rem; /* Alt boşluk */
+        }
+        
+        .blog-meta {
+            display: flex; /* Esnek kutu modeli */
+            align-items: center; /* Dikeyde ortala */
+            gap: 1rem; /* Elemanlar arası boşluk */
+            color: var(--light-text); /* Açık metin rengi */
+            font-size: 0.9rem; /* Küçük yazı boyutu */
+            margin-bottom: 1rem; /* Alt boşluk */
+        }
+        
+        .blog-meta span {
+            display: flex; /* Esnek kutu modeli */
+            align-items: center; /* Dikeyde ortala */
+            gap: 0.3rem; /* Elemanlar arası boşluk */
+        }
+        
+        .blog-excerpt {
+            color: var(--light-text); /* Açık metin rengi */
+            margin-bottom: 1rem; /* Alt boşluk */
+            line-height: 1.6; /* Satır yüksekliği */
+        }
+        
+        .read-more {
+            display: inline-block; /* Satır içi blok */
+            color: var(--accent); /* Vurgu rengi */
+            text-decoration: none; /* Alt çizgiyi kaldır */
+            font-weight: 600; /* Kalın yazı */
+            font-size: 0.9rem; /* Küçük yazı boyutu */
+        }
+        
+        .read-more:hover {
+            text-decoration: underline; /* Alt çizgi efekti */
+        }
+        
+        /* Projeler bölümü */
+        .projects-sidebar {
+            background: white; /* Beyaz arkaplan */
+            border-radius: 8px; /* Köşe yuvarlaklığı */
+            padding: 1.5rem; /* İç boşluk */
+            box-shadow: var(--card-shadow); /* Kart gölgesi */
+            align-self: start; /* Kendi hizasında başla */
+        }
+        
+        .project-card {
+            margin-bottom: 1.5rem; /* Alt boşluk */
+            padding-bottom: 1.5rem; /* Alt iç boşluk */
+            border-bottom: 1px solid var(--border-color); /* Alt kenarlık */
+        }
+        
+        .project-card:last-child {
+            margin-bottom: 0; /* Alt boşluk */
+            padding-bottom: 0; /* Alt iç boşluk */
+            border-bottom: none; /* Kenarlığı kaldır */
+        }
+        
+        .project-title {
+            font-size: 1.1rem; /* Yazı boyutu */
+            color: var(--primary); /* Ana renk */
+            margin-bottom: 0.5rem; /* Alt boşluk */
+        }
+        
+        .project-desc {
+            color: var(--light-text); /* Açık metin rengi */
+            font-size: 0.9rem; /* Küçük yazı boyutu */
+            line-height: 1.5; /* Satır yüksekliği */
+            margin-bottom: 0.5rem; /* Alt boşluk */
+        }
+        
+        .project-tags {
+            display: flex; /* Esnek kutu modeli */
+            flex-wrap: wrap; /* Çok satıra sarma */
+            gap: 0.5rem; /* Elemanlar arası boşluk */
+        }
+        
+        .project-tag {
+            background-color: var(--light-bg); /* Açık arkaplan */
+            color: var(--dark-text); /* Koyu metin rengi */
+            padding: 0.3rem 0.6rem; /* İç boşluk */
+            border-radius: 4px; /* Köşe yuvarlaklığı */
+            font-size: 0.75rem; /* Küçük yazı boyutu */
+        }
+        
+        /* İletişim bölümü */
+        .contact-footer {
+            background: var(--primary); /* Ana renk arkaplan */
+            color: white; /* Beyaz yazı rengi */
+            padding: 3rem 2rem; /* İç boşluk */
+            margin-top: 3rem; /* Üst boşluk */
+        }
+        
+        .contact-container {
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 0 auto; /* Otomatik yatay marj */
+            display: grid; /* Izgara düzeni */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Esnek sütunlar */
+            gap: 2rem; /* Elemanlar arası boşluk */
+        }
+        
+        .contact-info h3 {
+            font-size: 1.3rem; /* Orta yazı boyutu */
+            margin-bottom: 1rem; /* Alt boşluk */
+            color: white; /* Beyaz yazı rengi */
+        }
+        
+        .contact-details {
+            display: flex; /* Esnek kutu modeli */
+            flex-direction: column; /* Dikey yığınlama */
+            gap: 0.8rem; /* Elemanlar arası boşluk */
+        }
+        
+        .contact-details a {
+            color: rgba(255, 255, 255, 0.9); /* Yarı saydam beyaz */
+            text-decoration: none; /* Alt çizgiyi kaldır */
+            display: flex; /* Esnek kutu modeli */
+            align-items: center; /* Dikeyde ortala */
+            gap: 0.5rem; /* Elemanlar arası boşluk */
+            transition: color 0.3s; /* Renk geçiş efekti */
+        }
+        
+        .contact-details a:hover {
+            color: white; /* Beyaz renk */
+        }
+        
+        .copyright {
+            text-align: center; /* Ortalı içerik */
+            padding-top: 2rem; /* Üst iç boşluk */
+            margin-top: 2rem; /* Üst boşluk */
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Üst kenarlık */
+            color: rgba(255, 255, 255, 0.7); /* Yarı saydam beyaz */
+            font-size: 0.9rem; /* Küçük yazı boyutu */
+        }
+        
+        /* Responsive tasarım için medya sorguları */
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr; /* Tek sütun düzeni */
+            }
+            
+            .projects-sidebar {
+                order: -1; /* Sırayı değiştir */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                padding: 2rem 1rem; /* Daha az iç boşluk */
+            }
+            
+            .header h1 {
+                font-size: 2rem; /* Daha küçük yazı boyutu */
+            }
+            
+            .tagline {
+                font-size: 1rem; /* Daha küçük yazı boyutu */
+            }
+            
+            .profile-img {
+                width: 120px; /* Daha küçük genişlik */
+                height: 120px; /* Daha küçük yükseklik */
+            }
+            
+            .about-section {
+                padding: 1rem; /* Daha az iç boşluk */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Başlık bölümü -->
+    <header class="header"> <!-- Üst bilgi -->
+        <div class="profile-container"> <!-- Profil konteyneri -->
+            <img src="pp.png" alt="Ozan M." class="profile-img"> <!-- Profil fotoğrafı -->
+            <h1>Ozan M.</h1> <!-- İsim başlığı -->
+            <p class="tagline">Veri Bilimci | Analist | AI Meraklısı</p> <!-- Tagline -->
+            <div class="social-links"> <!-- Sosyal medya bağlantıları -->
+                <a href="#"><i class="fab fa-linkedin-in"></i></a> <!-- LinkedIn -->
+                <a href="#"><i class="far fa-envelope"></i></a> <!-- E-posta -->
+                <a href="#"><i class="fab fa-github"></i></a> <!-- GitHub -->
+                <a href="#"><i class="fab fa-medium-m"></i></a> <!-- Medium -->
+            </div>
+            
+            <!-- Hakkımda bölümü -->
+            <div class="about-section"> <!-- Hakkımda bölümü -->
+                <h3><i class="fas fa-user"></i> Hakkımda</h3> <!-- Hakkımda başlığı -->
+                <p>5 yılı aşkın süredir veri bilimi ve analiz alanında çalışıyorum. E-ticaret, sağlık ve gayrimenkul sektörlerinde veri odaklı projeler geliştirdim. Veriden anlamlı çıkarımlar yapmak ve iş problemlerine çözümler üretmek benim için bir tutku.</p> <!-- Hakkımda metni -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana içerik -->
+    <main class="main-container"> <!-- Ana içerik konteyneri -->
+        <!-- Blog yazıları bölümü -->
+        <section class="blog-posts"> <!-- Blog gönderileri -->
+            <h2 class="section-title">Son Yazılar</h2> <!-- Bölüm başlığı -->
+            
+            <article class="blog-card"> <!-- Blog kartı -->
+                <div class="blog-content"> <!-- Blog içeriği -->
+                    <h3 class="blog-title">Veri Görselleştirme Teknikleri</h3> <!-- Blog başlığı -->
+                    <div class="blog-meta"> <!-- Blog meta bilgileri -->
+                        <span><i class="far fa-calendar"></i> 15 Eylül 2023</span> <!-- Tarih -->
+                        <span><i class="far fa-clock"></i> 5 dk okuma</span> <!-- Okuma süresi -->
+                    </div>
+                    <p class="blog-excerpt">Veri görselleştirme, karmaşık veri setlerini anlaşılır şekilde sunmanın en etkili yollarından biridir. Bu yazıda, Python ve Matplotlib kullanarak etkili görselleştirmeler oluşturma tekniklerini inceliyoruz.</p> <!-- Blog özeti -->
+                    <a href="#" class="read-more">Devamını oku →</a> <!-- Devamını oku bağlantısı -->
+                </div>
+            </article>
+            
+            <article class="blog-card"> <!-- Blog kartı -->
+                <div class="blog-content"> <!-- Blog içeriği -->
+                    <h3 class="blog-title">Makine Öğrenmesi Modellerinde Hiperparametre Optimizasyonu</h3> <!-- Blog başlığı -->
+                    <div class="blog-meta"> <!-- Blog meta bilgileri -->
+                        <span><i class="far fa-calendar"></i> 5 Eylül 2023</span> <!-- Tarih -->
+                        <span><i class="far fa-clock"></i> 7 dk okuma</span> <!-- Okuma süresi -->
+                    </div>
+                    <p class="blog-excerpt">Hiperparametre optimizasyonu, makine öğrenmesi modellerinin performansını artırmak için kritik öneme sahiptir. Grid Search, Random Search ve Bayesian Optimization yöntemlerini karşılaştırmalı olarak ele alıyoruz.</p> <!-- Blog özetı -->
+                    <a href="#" class="read-more">Devamını oku →</a> <!-- Devamını oku bağlantısı -->
+                </div>
+            </article>
+            
+            <article class="blog-card"> <!-- Blog kartı -->
+                <div class="blog-content"> <!-- Blog içeriği -->
+                    <h3 class="blog-title">Büyük Veri ile Çalışma: Zorluklar ve Çözümler</h3> <!-- Blog başlığı -->
+                    <div class="blog-meta"> <!-- Blog meta bilgileri -->
+                        <span><i class="far fa-calendar"></i> 28 Ağustos 2023</span> <!-- Tarih -->
+                        <span><i class="far fa-clock"></i> 6 dk okuma</span> <!-- Okuma süresi -->
+                    </div>
+                    <p class="blog-excerpt">Büyük veri setleriyle çalışırken karşılaşılan bellek kısıtlamaları, işlem süresi ve depolama sorunlarına pratik çözümler. Dask ve Spark gibi araçların kullanım senaryolarını inceliyoruz.</p> <!-- Blog özeti -->
+                    <a href="#" class="read-more">Devamını oku →</a> <!-- Devamını oku bağlantısı -->
+                </div>
+            </article>
+        </section>
+        
+        <!-- Projeler bölümü -->
+        <aside class="projects-sidebar"> <!-- Projeler kenar çubuğu -->
+            <h2 class="section-title">Projeler</h2> <!-- Bölüm başlığı -->
+            
+            <div class="project-card"> <!-- Proje kartı -->
+                <h3 class="project-title">Uyku Sağlığı ve Yaşam Tarzı Analizi</h3> <!-- Proje başlığı -->
+                <p class="project-desc">Pandas, Matplotlib ile veri temizleme ve görselleştirme</p> <!-- Proje açıklaması -->
+                <div class="project-tags"> <!-- Proje etiketleri -->
+                    <span class="project-tag">Python</span> <!-- Etiket -->
+                    <span class="project-tag">Pandas</span> <!-- Etiket -->
+                    <span class="project-tag">Matplotlib</span> <!-- Etiket -->
+                </div>
+            </div>
+            
+            <div class="project-card"> <!-- Proje kartı -->
+                <h3 class="project-title">Gayrimenkul Satış Analizi (2001–2022)</h3> <!-- Proje başlığı -->
+                <p class="project-desc">Python ile fiyat trendleri ve pazar dinamikleri</p> <!-- Proje açıklaması -->
+                <div class="project-tags"> <!-- Proje etiketleri -->
+                    <span class="project-tag">Python</span> <!-- Etiket -->
+                    <span class="project-tag">Veri Analizi</span> <!-- Etiket -->
+                    <span class="project-tag">Zaman Serileri</span> <!-- Etiket -->
+                </div>
+            </div>
+            
+            <div class="project-card"> <!-- Proje kartı -->
+                <h3 class="project-title">Tıbbi Maliyet Analizi</h3> <!-- Proje başlığı -->
+                <p class="project-desc">Demografik verilerden sağlık harcamaları çıkarımları</p> <!-- Proje açıklaması -->
+                <div class="project-tags"> <!-- Proje etiketleri -->
+                    <span class="project-tag">Python</span> <!-- Etiket -->
+                    <span class="project-tag">Makine Öğrenmesi</span> <!-- Etiket -->
+                    <span class="project-tag">Regresyon</span> <!-- Etiket -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- İletişim bölümü -->
+    <footer class="contact-footer"> <!-- İletişim alt bilgisi -->
+        <div class="contact-container"> <!-- İletişim konteyneri -->
+            <div class="contact-info"> <!-- İletişim bilgileri -->
+                <h3>İletişim</h3> <!-- Başlık -->
+                <div class="contact-details"> <!-- İletişim detayları -->
+                    <a href="mailto:ozan@example.com"> <!-- E-posta bağlantısı -->
+                        <i class="far fa-envelope"></i> ozan@example.com <!-- E-posta adresi -->
+                    </a>
+                    <a href="#"> <!-- LinkedIn bağlantısı -->
+                        <i class="fab fa-linkedin-in"></i> LinkedIn Profilim <!-- LinkedIn -->
+                    </a>
+                    <a href="#"> <!-- Twitter bağlantısı -->
+                        <i class="fab fa-twitter"></i> Twitter Hesabım <!-- Twitter -->
+                    </a>
+                    <a href="#"> <!-- Konum bağlantısı -->
+                        <i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye <!-- Konum -->
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-info"> <!-- Eğitim bilgileri -->
+                <h3>Eğitim</h3> <!-- Başlık -->
+                <div class="contact-details"> <!-- Eğitim detayları -->
+                    <p>Boğaziçi Üniversitesi – Bilgisayar Mühendisliği Lisans</p> <!-- Eğitim 1 -->
+                    <p>Sabancı Üniversitesi – Veri Bilimi Yüksek Lisans</p> <!-- Eğitim 2 -->
+                    <p>Google Advanced Data Analytics Sertifikası</p> <!-- Eğitim 3 -->
+                </div>
+            </div>
+            
+            <div class="contact-info"> <!-- Deneyim bilgileri -->
+                <h3>Deneyim</h3> <!-- Başlık -->
+                <div class="contact-details"> <!-- Deneyim detayları -->
+                    <p>Veri Analisti – E-ticaret şirketinde satış analizi ve raporlama</p> <!-- Deneyim 1 -->
+                    <p>Freelance Data Scientist – Müşteri davranış analizi ve tahminleme modelleri</p> <!-- Deneyim 2 -->
+                    <p>Araştırma Asistanı – Üniversitede yapay zeka projeleri</p> <!-- Deneyim 3 -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright"> <!-- Telif hakkı -->
+            &copy; 2023 Ozan M. Tüm hakları saklıdır. <!-- Telif hakkı metni -->
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Ozan M. - Veri Dashboard Portfolyosu</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Genel CSS Ayarları */
+        body {
+            font-family: 'Poppins', sans-serif; /* Modern bir yazı tipi */
+            margin: 0; /* Sayfa kenar boşluklarını sıfırlama */
+            background-color: #f4f7fa; /* Açık gri arkaplan */
+            color: #333; /* Metin rengi */
+            display: flex; /* Flexbox ile tam ekran düzeni */
+        }
+
+        /* Dashboard Düzeni */
+        .dashboard-container {
+            display: flex; /* Ana konteynerin flexbox düzeni */
+            width: 100%; /* Tam genişlik */
+            min-height: 100vh; /* Ekran yüksekliğini kapla */
+        }
+
+        /* Sol Menü (Sidebar) */
+        .sidebar {
+            width: 250px; /* Sabit genişlik */
+            background-color: #2c3e50; /* Koyu gri menü arkaplanı */
+            color: #ecf0f1; /* Açık metin rengi */
+            padding: 20px; /* İç boşluk */
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+            display: flex; /* Flexbox düzeni */
+            flex-direction: column; /* Dikeyde sıralama */
+        }
+
+        .sidebar .profile {
+            text-align: center; /* İçeriği ortala */
+            margin-bottom: 30px; /* Alt boşluk */
+        }
+
+        .profile-image-container {
+            width: 120px; /* Konteyner genişliği */
+            height: 120px; /* Konteyner yüksekliği */
+            border-radius: 50%; /* Dairesel şekil */
+            overflow: hidden; /* Taşmayı gizle */
+            margin: 0 auto 10px; /* Ortalamak için */
+            border: 4px solid #3498db; /* Mavi çerçeve */
+        }
+
+        .profile-image-container img {
+            width: 100%; /* Görüntüyü konteynere sığdır */
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar .profile h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .sidebar nav ul {
+            list-style: none; /* Liste işaretlerini kaldır */
+            padding: 0;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 10px; /* Liste elemanları arası boşluk */
+        }
+
+        .sidebar nav ul li a {
+            display: block; /* Tam genişlikte bağlantı */
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 12px 15px; /* İç boşluk */
+            border-radius: 6px; /* Köşeleri yuvarlat */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Renk geçişi */
+        }
+
+        .sidebar nav ul li a:hover,
+        .sidebar nav ul li a.active {
+            background-color: #34495e; /* Hover/aktif arkaplan rengi */
+            color: #3498db; /* Vurgulu metin rengi */
+        }
+
+        .sidebar nav ul li a i {
+            margin-right: 10px; /* İkon ile metin arası boşluk */
+        }
+
+        /* Ana İçerik Alanı (Main Content) */
+        .main-content {
+            flex: 1; /* Geri kalan tüm alanı kapla */
+            padding: 20px;
+            overflow-y: auto; /* Dikey kaydırmayı etkinleştir */
+        }
+
+        /* Üst Navbar */
+        .top-navbar {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-navbar h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+
+        /* Dashboard Panelleri */
+        .panel {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .panel h2 {
+            margin-top: 0;
+            color: #3498db;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #ecf0f1; /* Alt çizgi */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Proje Kartları (Cards) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: #f9fafb; /* Kart arkaplanı */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .project-card .card-header i {
+            font-size: 2.5rem; /* İkon boyutu */
+            color: #3498db;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+
+        .project-card p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .project-card a.button {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-card a.button:hover {
+            background-color: #2980b9;
+        }
+
+        /* İletişim bölümü için CSS */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: #2c3e50;
+            font-size: 2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                flex-direction: column; /* Dikeyde sırala */
+            }
+
+            .sidebar {
+                width: 100%; /* Tam genişlikte sidebar */
+                padding: 15px;
+                flex-direction: row; /* Yatay menü */
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .sidebar .profile {
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
+            }
+
+            .profile-image-container {
+                width: 60px;
+                height: 60px;
+                margin-right: 15px;
+            }
+
+            .sidebar h2 {
+                display: none; /* Mobilde ismi gizle */
+            }
+
+            .sidebar nav ul {
+                display: flex; /* Yatay liste */
+            }
+
+            .sidebar nav ul li {
+                margin-left: 10px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .top-navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .top-navbar h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <div class="sidebar">
+            <div class="profile">
+                <div class="profile-image-container">
+                    <img src="pp.png" alt="Profil Fotoğrafı">
+                </div>
+                <h2>Ozan M.</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#genel-bakis" class="active"><i class="fas fa-tachometer-alt"></i> Genel Bakış</a></li>
+                    <li><a href="#egitim"><i class="fas fa-graduation-cap"></i> Eğitim</a></li>
+                    <li><a href="#deneyim"><i class="fas fa-briefcase"></i> Deneyim</a></li>
+                    <li><a href="#projeler"><i class="fas fa-chart-line"></i> Projeler</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="top-navbar">
+                <h1>Merhaba, Ozan M.</h1>
+                <div class="contact-info">
+                    <a href="https://linkedin.com/in/ornekprofil" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:ornek.mail@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div id="genel-bakis" class="panel">
+                <h2>Genel Bakış</h2>
+                <p>Boğaziçi Üniversitesi Bilgisayar Mühendisliği mezunu, veri analizi ve makine öğrenimi konularında uzmanlaşmış bir profesyonelim. Sabancı Üniversitesi'nde Veri Bilimi yüksek lisansımı tamamladım ve Google'dan ileri düzey veri analizi sertifikası aldım. Portfolyoma hoş geldiniz!</p>
+            </div>
+
+            <div id="egitim" class="panel">
+                <h2>Eğitim</h2>
+                <ul>
+                    <li><strong>Boğaziçi Üniversitesi</strong> - Bilgisayar Mühendisliği Lisans</li>
+                    <li><strong>Sabancı Üniversitesi</strong> - Veri Bilimi Yüksek Lisans</li>
+                    <li><strong>Google</strong> - Advanced Data Analytics Sertifikası</li>
+                </ul>
+            </div>
+
+            <div id="deneyim" class="panel">
+                <h2>Deneyim</h2>
+                <ul>
+                    <li><strong>Veri Analisti</strong> - E-ticaret şirketinde satış analizi ve raporlama</li>
+                    <li><strong>Freelance Data Scientist</strong> - Müşteri davranış analizi ve tahminleme modelleri</li>
+                    <li><strong>Araştırma Asistanı</strong> - Üniversitede yapay zeka projeleri</li>
+                </ul>
+            </div>
+
+            <div id="projeler" class="panel">
+                <h2>Projeler</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="card-header">
+                            <h3>Uyku Sağlığı ve Yaşam Tarzı Analizi</h3>
+                            <i class="fas fa-chart-bar"></i> </div>
+                        <p>Pandas ve Matplotlib kullanarak geniş bir veri setinde veri temizleme ve görselleştirme tekniklerinin uygulanması.</p>
+                        <a href="https://github.com/kullaniciadi/uyku-analizi" target="_blank" class="button">Detaylar</a> </div>
+                    
+                    <div class="project-card">
+                        <div class="card-header">
+                            <h3>Gayrimenkul Satış Analizi</h3>
+                            <i class="fas fa-chart-pie"></i> </div>
+                        <p>Python ile geçmiş verileri kullanarak fiyat trendlerini ve pazar dinamiklerini inceleyen kapsamlı bir analiz projesi.</p>
+                        <a href="https://github.com/kullaniciadi/gayrimenkul-analizi" target="_blank" class="button">Detaylar</a> </div>
+                    
+                    <div class="project-card">
+                        <div class="card-header">
+                            <h3>Tıbbi Maliyet Analizi</h3>
+                            <i class="fas fa-chart-area"></i> </div>
+                        <p>Demografik verileri ve sağlık kayıtlarını kullanarak tıbbi maliyetler üzerindeki etkileri ortaya çıkaran bir analiz.</p>
+                        <a href="https://github.com/kullaniciadi/tibbi-maliyet-analizi" target="_blank" class="button">Detaylar</a> </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

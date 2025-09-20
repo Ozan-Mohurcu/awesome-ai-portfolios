@@ -1,0 +1,219 @@
+/* # ---- GENEL AYARLAR VE DEĞİŞKENLER ---- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); /* # Google'dan modern bir yazı tipi olan 'Poppins'i projeye dahil eder. */
+
+:root { /* # CSS içinde tekrar tekrar kullanılacak renk, boşluk gibi değerleri değişken olarak tanımlar. */
+    --arkaplan-renk: #f4f7f9; /* # Sayfanın genel arkaplan rengi. */
+    --kart-renk: #ffffff; /* # Kartların ve içerik bloklarının arkaplan rengi. */
+    --ana-yazi-renk: #333; /* # Genel metinlerin rengi. */
+    --ikincil-yazi-renk: #666; /* # Daha az önemli metinlerin (şirket ismi vb.) rengi. */
+    --vurgu-renk: #007bff; /* # Linkler, ikonlar ve zaman çizelgesi gibi vurgulanacak elemanların rengi. */
+    --golge: 0 4px 15px rgba(0, 0, 0, 0.08); /* # Kartlara ve elemanlara derinlik hissi veren gölge efekti. */
+}
+
+* { /* # "Universal selector", tüm HTML elemanları için geçerli olacak kuralları belirler. */
+    margin: 0; /* # Elemanların dış boşluğunu sıfırlar. */
+    padding: 0; /* # Elemanların iç boşluğunu sıfırlar. */
+    box-sizing: border-box; /* # Elemanların genişlik ve yükseklik hesaplamasına padding ve border'ı dahil eder. Bu, yerleşimi kolaylaştırır. */
+}
+
+body { /* # <body> etiketine, yani sayfanın tamamına stil uygular. */
+    font-family: 'Poppins', sans-serif; /* # Tüm sayfada kullanılacak yazı tipini belirler. */
+    background-color: var(--arkaplan-renk); /* # Sayfanın arkaplan rengini değişkenden alır. */
+    color: var(--ana-yazi-renk); /* # Sayfanın genel yazı rengini değişkenden alır. */
+    line-height: 1.6; /* # Satır yüksekliğini ayarlayarak metinlerin daha okunaklı olmasını sağlar. */
+}
+
+.container { /* # Ana içeriği saran sarmalayıcıya stil uygular. */
+    max-width: 900px; /* # İçeriğin alabileceği maksimum genişliği belirler. */
+    margin: 40px auto; /* # Üstten ve alttan 40px, sağdan ve soldan otomatik boşluk bırakarak içeriği ortalar. */
+    padding: 20px; /* # İçeriğin kenarlardan 20px içeride başlamasını sağlar. */
+}
+
+.bolum-baslik { /* # "Eğitim & Deneyim" ve "Projeler" gibi bölüm başlıklarına stil uygular. */
+    text-align: center; /* # Başlığı ortalar. */
+    margin-bottom: 40px; /* # Başlığın altına 40px boşluk bırakır. */
+    color: var(--ana-yazi-renk); /* # Başlığın rengini belirler. */
+    font-weight: 600; /* # Başlığın yazı kalınlığını ayarlar. */
+    position: relative; /* # Çizgi eklemek için pozisyonunu ayarlar. */
+}
+
+.bolum-baslik::after { /* # Başlığın altına dekoratif bir çizgi eklemek için "pseudo-element" kullanır. */
+    content: ''; /* # Pseudo-elementlerin çalışması için bu özellik gereklidir. */
+    position: absolute; /* # Çizginin pozisyonunu başlığa göre ayarlar. */
+    bottom: -10px; /* # Çizgiyi başlığın 10px altına yerleştirir. */
+    left: 50%; /* # Çizgiyi yatayda ortalamak için soldan %50 iter. */
+    transform: translateX(-50%); /* # Kendi genişliğinin yarısı kadar geri çekerek tam ortalanmasını sağlar. */
+    width: 60px; /* # Çizginin genişliğini belirler. */
+    height: 3px; /* # Çizginin kalınlığını belirler. */
+    background-color: var(--vurgu-renk); /* # Çizginin rengini değişkenden alır. */
+}
+
+/* # ---- PROFİL HEADER BÖLÜMÜ ---- */
+.profil-header { /* # Profil bilgilerini içeren üst bölüme stil uygular. */
+    text-align: center; /* # İçindeki tüm elemanları (resim, yazı) ortalar. */
+    background-color: var(--kart-renk); /* # Arkaplan rengini beyaz yapar. */
+    padding: 30px; /* # İçeriden 30px boşluk verir. */
+    border-radius: 10px; /* # Kenarları yuvarlaklaştırır. */
+    box-shadow: var(--golge); /* # Gölgelendirme efekti ekler. */
+    margin-bottom: 50px; /* # Altına 50px boşluk bırakır. */
+}
+
+.profil-foto { /* # Profil fotoğrafına stil uygular. */
+    width: 150px; /* # Fotoğrafın genişliğini belirler. */
+    height: 150px; /* # Fotoğrafın yüksekliğini belirler. */
+    border-radius: 50%; /* # Fotoğrafı tam daire şeklinde gösterir. */
+    object-fit: cover; /* # Fotoğrafın oranını bozmadan alanı kaplamasını sağlar. */
+    border: 5px solid var(--vurgu-renk); /* # Fotoğrafın etrafına renkli bir çerçeve ekler. */
+    margin-bottom: 15px; /* # Altına 15px boşluk bırakır. */
+}
+
+.profil-header h1 { /* # Profil bölümündeki isme stil uygular. */
+    margin-bottom: 5px; /* # Altına 5px boşluk bırakır. */
+    font-weight: 700; /* # Yazı kalınlığını ayarlar. */
+}
+
+.unvan { /* # Profil bölümündeki unvana stil uygular. */
+    color: var(--ikincil-yazi-renk); /* # Yazı rengini belirler. */
+    font-weight: 300; /* # Yazı kalınlığını daha ince yapar. */
+    margin-bottom: 20px; /* # Altına 20px boşluk bırakır. */
+}
+
+.sosyal-linkler a { /* # Sosyal medya linklerine stil uygular. */
+    color: var(--ikincil-yazi-renk); /* # İkon rengini belirler. */
+    font-size: 24px; /* # İkon boyutunu büyütür. */
+    margin: 0 10px; /* # İkonların sağına ve soluna 10px boşluk bırakır. */
+    transition: color 0.3s ease; /* # Renk değişiminin 0.3 saniyede yumuşak bir geçişle olmasını sağlar. */
+}
+
+.sosyal-linkler a:hover { /* # Fare imleci linklerin üzerine geldiğinde uygulanacak stili belirler. */
+    color: var(--vurgu-renk); /* # İkonun rengini vurgu rengiyle değiştirir. */
+}
+
+/* # ---- ZAMAN ÇİZELGESİ (TIMELINE) ---- */
+.timeline { /* # Zaman çizelgesi ana sarmalayıcısına stil uygular. */
+    position: relative; /* # İçindeki dikey çizginin pozisyonunu buna göre ayarlamak için gereklidir. */
+    padding-left: 30px; /* # Soldan boşluk bırakarak içeriği çizgiden ayırır. */
+}
+
+.timeline::before { /* # Dikey zaman çizgisini oluşturmak için "pseudo-element" kullanır. */
+    content: ''; /* # Pseudo-elementlerin çalışması için bu özellik gereklidir. */
+    position: absolute; /* # Çizginin pozisyonunu timeline sarmalayıcısına göre ayarlar. */
+    left: 10px; /* # Çizgiyi soldan 10px içeriye yerleştirir. */
+    top: 0; /* # Çizgiyi en üstten başlatır. */
+    height: 100%; /* # Çizginin yüksekliğini sarmalayıcının tamamı kadar yapar. */
+    width: 2px; /* # Çizginin kalınlığını belirler. */
+    background-color: #ddd; /* # Çizginin rengini belirler. */
+}
+
+.timeline-item { /* # Zaman çizelgesindeki her bir öğeye (eğitim/deneyim) stil uygular. */
+    position: relative; /* # Üzerindeki yuvarlak noktanın pozisyonunu buna göre ayarlamak için gereklidir. */
+    margin-bottom: 30px; /* # Öğelerin arasına 30px dikey boşluk bırakır. */
+}
+
+.timeline-item:last-child { /* # Zaman çizelgesindeki son öğeyi seçer. */
+    margin-bottom: 0; /* # Son öğenin altındaki boşluğu kaldırır. */
+}
+
+.timeline-item::before { /* # Zaman çizelgesindeki her öğenin solundaki yuvarlak noktayı oluşturur. */
+    content: ''; /* # Pseudo-elementlerin çalışması için bu özellik gereklidir. */
+    position: absolute; /* # Noktanın pozisyonunu öğeye göre ayarlar. */
+    left: -26px; /* # Noktayı dikey çizginin üzerine gelecek şekilde sola konumlandırır. */
+    top: 5px; /* # Noktayı dikeyde hizalar. */
+    width: 12px; /* # Noktanın genişliğini belirler. */
+    height: 12px; /* # Noktanın yüksekliğini belirler. */
+    background-color: var(--vurgu-renk); /* # Noktanın rengini belirler. */
+    border-radius: 50%; /* # Noktayı daire şekline getirir. */
+    z-index: 1; /* # Noktanın dikey çizginin üzerinde görünmesini sağlar. */
+}
+
+.timeline-icerik { /* # Her bir zaman çizelgesi öğesinin içerik kutusuna stil uygular. */
+    background-color: var(--kart-renk); /* # Arkaplan rengini belirler. */
+    padding: 20px; /* # İçeriden 20px boşluk verir. */
+    border-radius: 8px; /* # Kenarları yuvarlaklaştırır. */
+    box-shadow: var(--golge); /* # Gölgelendirme efekti ekler. */
+}
+
+.timeline-baslik { /* # Öğenin başlığına (örn: Veri Analisti) stil uygular. */
+    font-weight: 600; /* # Yazı kalınlığını belirler. */
+    margin-bottom: 5px; /* # Altına 5px boşluk bırakır. */
+}
+
+.timeline-sirket { /* # Şirket veya okul ismine stil uygular. */
+    color: var(--ikincil-yazi-renk); /* # Yazı rengini belirler. */
+    font-size: 0.9em; /* # Yazı boyutunu biraz küçültür. */
+    margin-bottom: 10px; /* # Altına 10px boşluk bırakır. */
+}
+
+.timeline-aciklama { /* # Açıklama metnine stil uygular. */
+    font-size: 0.95em; /* # Yazı boyutunu biraz küçültür. */
+    color: var(--ana-yazi-renk); /* # Yazı rengini belirler. */
+}
+
+/* # ---- PROJELER BÖLÜMÜ ---- */
+.projeler { /* # Projeler bölümüne stil uygular. */
+    margin-top: 50px; /* # Üstteki bölümle arasına 50px boşluk bırakır. */
+}
+
+.projeler-grid { /* # Proje kartlarını içeren ızgara yapısına stil uygular. */
+    display: grid; /* # İçindeki elemanları ızgara düzenine sokar. */
+    grid-template-columns: 1fr; /* # Başlangıçta tek sütunlu bir düzen oluşturur. */
+    gap: 20px; /* # Izgara elemanları arasına 20px boşluk bırakır. */
+}
+
+.proje-kart { /* # Tek bir proje kartına stil uygular. */
+    background-color: var(--kart-renk); /* # Arkaplan rengini belirler. */
+    padding: 25px; /* # İçeriden 25px boşluk verir. */
+    border-radius: 8px; /* # Kenarları yuvarlaklaştırır. */
+    box-shadow: var(--golge); /* # Gölgelendirme efekti ekler. */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* # Büyüme ve gölge efektlerinin yumuşak geçiş yapmasını sağlar. */
+}
+
+.proje-kart:hover { /* # Fare imleci proje kartının üzerine geldiğinde uygulanacak stili belirler. */
+    transform: translateY(-5px); /* # Kartı 5px yukarı kaydırır. */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* # Gölgelendirmeyi daha belirgin hale getirir. */
+}
+
+.proje-kart h3 { /* # Proje kartı başlığına stil uygular. */
+    margin-bottom: 10px; /* # Altına 10px boşluk bırakır. */
+    color: var(--vurgu-renk); /* # Rengini vurgu rengi yapar. */
+}
+
+.proje-link { /* # "GitHub'da Görüntüle" linkine stil uygular. */
+    display: inline-block; /* # Genişlik ve yükseklik verebilmek için blok eleman gibi davranmasını sağlar. */
+    margin-top: 15px; /* # Üstüne 15px boşluk bırakır. */
+    padding: 8px 15px; /* # İçeriden dikeyde 8px, yatayda 15px boşluk verir. */
+    background-color: var(--vurgu-renk); /* # Arkaplan rengini belirler. */
+    color: #fff; /* # Yazı rengini beyaz yapar. */
+    text-decoration: none; /* # Altındaki çizgiyi kaldırır. */
+    border-radius: 5px; /* # Kenarları yuvarlaklaştırır. */
+    font-weight: 500; /* # Yazı kalınlığını ayarlar. */
+    transition: background-color 0.3s ease; /* # Arkaplan rengi değişiminin yumuşak geçiş yapmasını sağlar. */
+}
+
+.proje-link:hover { /* # Fare imleci linkin üzerine geldiğinde uygulanacak stili belirler. */
+    background-color: #0056b3; /* # Arkaplan rengini biraz daha koyu yapar. */
+}
+
+
+/* # ---- RESPONSIVE TASARIM (MOBİL UYUMLULUK) ---- */
+@media (min-width: 768px) { /* # Ekran genişliği 768px veya daha büyük olduğunda bu stilleri uygular (tablet ve masaüstü için). */
+    .projeler-grid { /* # Projeler ızgarasını seçer. */
+        grid-template-columns: repeat(2, 1fr); /* # Izgarayı iki eşit sütuna böler. */
+    }
+}
+
+@media (max-width: 600px) { /* # Ekran genişliği 600px veya daha küçük olduğunda bu stilleri uygular (mobil cihazlar için). */
+    .container { /* # Ana sarmalayıcıyı seçer. */
+        margin: 20px auto; /* # Dikey boşluğu azaltır. */
+        padding: 15px; /* # İç boşluğu azaltır. */
+    }
+
+    .timeline { /* # Zaman çizelgesini seçer. */
+        padding-left: 20px; /* # Soldaki iç boşluğu azaltır. */
+    }
+
+    .timeline-item::before { /* # Zaman çizelgesi noktasını seçer. */
+        left: -20px; /* # Noktayı yeni konuma göre ayarlar. */
+    }
+}
+

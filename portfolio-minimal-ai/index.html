@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozan M. - Portföy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            color: #fff;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: url('https://source.unsplash.com/random/1920x1080?tech') no-repeat center/cover;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        nav a:hover {
+            color: #ff6b6b;
+            transform: scale(1.1);
+        }
+        .section {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        ul li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        ul li:before {
+            content: "→";
+            color: #ff6b6b;
+            position: absolute;
+            left: 0;
+        }
+        a {
+            color: #ff6b6b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #ff8787;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #1e3c72;
+            margin-top: 2rem;
+        }
+        footer p {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.1rem;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .section {
+                padding: 1.5rem;
+                margin: 2rem auto;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            ul li {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Ozan M.</h1>
+        <p>Veri Bilimi & Yapay Zeka Macerası | 20 Eylül 2025</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#hakkimda">Hakkımda</a></li>
+            <li><a href="#egitim">Eğitim</a></li>
+            <li><a href="#deneyim">Deneyim</a></li>
+            <li><a href="#projeler">Projeler</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <section id="hakkimda" class="section">
+        <h2>Hakkımda</h2>
+        <p>Merhaba! Ben Ozan, veri bilimi ve yapay zeka dünyasında kendimi geliştiren bir maceraperestim. Kod yazmayı, veriyi anlamlı hikayelere dönüştürmeyi ve inovatif projeler üretmeyi seviyorum. Boğaziçi’den mezun olduktan sonra Sabancı’da veri biliminde derinleştim ve Google sertifikalarıyla yetkinliklerimi perçinledim.</p>
+    </section>
+
+    <section id="egitim" class="section">
+        <h2>Eğitim</h2>
+        <ul>
+            <li>Boğaziçi Üniversitesi – Bilgisayar Mühendisliği (2015-2019)</li>
+            <li>Sabancı Üniversitesi – Veri Bilimi Yüksek Lisans (2020-2022)</li>
+            <li>Google Advanced Data Analytics Sertifikası (2023)</li>
+        </ul>
+    </section>
+
+    <section id="deneyim" class="section">
+        <h2>Deneyim</h2>
+        <ul>
+            <li>Veri Analisti – E-ticaret satış analizleri (2022-2023)</li>
+            <li>Freelance Data Scientist – Müşteri davranış tahminleri (2023-2024)</li>
+            <li>Araştırma Asistanı – AI projeleri (2024-Şu an)</li>
+        </ul>
+    </section>
+
+    <section id="projeler" class="section">
+        <h2>Projeler</h2>
+        <ul>
+            <li>Uyku Sağlığı Analizi – Pandas & Matplotlib ile görselleştirme</li>
+            <li>Gayrimenkul Trendleri – Python ile pazar analizi (2001-2022)</li>
+            <li>Tıbbi Maliyet Tahmini – Demografik verilerle analiz</li>
+        </ul>
+    </section>
+
+    <section id="iletisim" class="section">
+        <h2>İletişim</h2>
+        <p>E-posta: <a href="mailto:ozan@example.com">ozan@example.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/ozanm" target="_blank">linkedin.com/in/ozanm</a></p>
+        <p>Telefon: <a href="tel:+905XXXXXXXXX">+90 5XX XXX XX XX</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ozan M. | Tasarlandı ile sevgi</p>
+    </footer>
+</body>
+</html>
